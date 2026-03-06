@@ -3,38 +3,51 @@ name: build addon
 on:
   push:
     tags: ["*"]
+    # To build on main/master branch, uncomment the following line:
+    # branches: [ main , master ]
+
   pull_request:
-    branches: [main, master]
+    branches: [ main, master ]
+
   workflow_dispatch:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repo
       uses: actions/checkout@v6
-
+      
     - name: Install uv
       uses: astral-sh/setup-uv@v7
-
-    - name: Install dependencies
+      
+    - name: Set up Python
+      run: uv python install
+      
+    - name: Install dependencies in Virtual Environment
       run: |
         sudo apt-get update -y
         sudo apt-get install -y gettext
-
+        
+        # 1. Create a virtual environment (defaults to creating a .venv folder in the current directory)
         uv venv
-        .venv/bin/uv pip install scons markdown ruff pre-commit
+        
+        # 2. Add the virtual environment's bin folder to GITHUB_PATH 
+        # This guarantees that all following steps use this environment's python, pre-commit, scons, etc.
+        echo "$GITHUB_WORKSPACE/.venv/bin" >> $GITHUB_PATH
+        
+        # 3. Install the specific libraries requested
+        uv pip install Markdown scons pre-commit ruff
 
     - name: Code checks
-      run: |
-        export SKIP=no-commit-to-branch
-        .venv/bin/pre-commit run --all-files
+      # Because of GITHUB_PATH, this automatically uses the pre-commit and ruff installed in the venv
+      run: export SKIP=no-commit-to-branch; pre-commit run --all
 
-    - name: Build addon
-      run: |
-        .venv/bin/scons
-        .venv/bin/scons pot
+    - name: building addon
+      # Because of GITHUB_PATH, this automatically uses the scons installed in the venv
+      run: scons && scons pot
 
     - uses: actions/upload-artifact@v7
       with:
@@ -49,16 +62,15 @@ jobs:
     needs: ["build"]
     permissions:
       contents: write
-
     steps:
     - uses: actions/checkout@v6
-
-    - name: Download release files
+    
+    - name: download releases files
       uses: actions/download-artifact@v8
-
-    - name: Display structure
+      
+    - name: Display structure of downloaded files
       run: ls -R
-
+      
     - name: Calculate sha256
       run: |
         echo -e "\nSHA256: " >> changelog.md
