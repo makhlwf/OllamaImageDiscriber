@@ -2,14 +2,19 @@ name: build addon
 
 on:
   push:
-    tags: ["*"]
+    tags:["*"]
     # To build on main/master branch, uncomment the following line:
-    # branches: [ main , master ]
+    # branches:[ main , master ]
 
   pull_request:
     branches: [ main, master ]
 
   workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Release tag to update (e.g., 1.0). Leave empty to use the branch/tag you triggered from.'
+        required: false
+        type: string
 
 jobs:
   build:
@@ -46,7 +51,8 @@ jobs:
 
   upload_release:
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
+    # Only run if it's a tag push, OR if triggered manually and a tag is explicitly provided
+    if: startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && inputs.tag_name != '')
     needs: ["build"]
     permissions:
       contents: write
@@ -67,10 +73,12 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: ${{ github.ref_name }}
+        # Uses your manual input if provided, otherwise falls back to the tag that triggered the workflow
+        tag_name: ${{ inputs.tag_name || github.ref_name }}
         files: |
           *.nvda-addon
           *.pot
         body_path: changelog.md
         fail_on_unmatched_files: true
-        prerelease: ${{ contains(github.ref, '-') }}
+        # Properly flags as a prerelease if a hyphen is in the input or the ref
+        prerelease: ${{ contains(inputs.tag_name, '-') || contains(github.ref, '-') }}
