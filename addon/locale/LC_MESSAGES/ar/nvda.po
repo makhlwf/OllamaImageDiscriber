@@ -1,0 +1,167 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the 'OllamaImageDiscriber' package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 'OllamaImageDiscriber' '1.0'\n"
+"Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
+"POT-Creation-Date: 2026-03-07 01:31+0200\n"
+"PO-Revision-Date: 2026-03-07 05:25+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:59
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:348
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:354
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:360
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:369
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:378
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:390
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:402
+msgid "Ollama Image Describer"
+msgstr ""
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:64
+msgid "Model Name:"
+msgstr "إسم النموذج"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:67
+msgid "Default System Prompt:"
+msgstr "طلب النظام الإفتراضي"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:70
+msgid "Ollama Server URL:"
+msgstr "عنوان URL لخادم OLLAMA"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:73
+msgid "API Key (Optional):"
+msgstr "مفتاح API اختياري"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:76
+msgid "Timeout (seconds):"
+msgstr "الوقت المسموح به للإنتظار بالثواني"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:80
+msgid "Max Image Size (px):"
+msgstr "حجم الصورة الأقصئ بالبكسلز"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:85
+msgid "Show description in Virtual Viewer"
+msgstr "عرض الوصف في العارض الإفتراضي"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:90
+msgid "Automatically copy description to clipboard"
+msgstr "نسخ الوصف تلقائيا للحافظة"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:95
+msgid "Save captured image to Temp folder (Debug)"
+msgstr "حفظ الصورة الملتقطة لمجلد مؤقت, للإختبار فقط"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:254
+msgid "Ollama returned an empty response."
+msgstr "لقد أعاد OLLAMA وصف فارغ"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:258
+msgid "Invalid response from server. Check Ollama host url."
+msgstr "رد غير صالح من الخادم, تأكد من عنوان URL لخادم OLLAMA"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:263
+msgid "Ollama server timed out. Try increasing the timeout."
+msgstr "تأخر رد خادم OLLAMA كثيرا, جرب زيادة مهلة الإنتظار في الإعدادات"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:267
+msgid "Connection failed. Is Ollama running?"
+msgstr "فشل الإتصال, هل OLLAMA يعمل؟"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:272
+msgid "An unexpected Ollama Error occurred."
+msgstr "حدث خطأ لم يكن في الحسبان"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:282
+msgid "Copied to clipboard."
+msgstr "تم النسخ للحافظة"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:285
+msgid "Ollama Description"
+msgstr "وصف OLLAMA"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:291
+msgid "Already analyzing an image. Please wait or cancel."
+msgstr "يتم تحليل الصورة بالفعل, إنتظر او قم بإلغاء العملية"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:294
+msgid "Capturing..."
+msgstr "يتم الإلتقاط"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:302
+msgid "No valid image found on the clipboard."
+msgstr "لم يتم العثور على صورة صالحة في الحافظة"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:323
+msgid "Could not capture image. Object might be invisible or off-screen."
+msgstr "لم يتم التمكن من إلتقاط صورة, قد يكون العنصر غير مرئيا او خارج الشاشة"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:328
+msgid "What would you like to ask about this image?"
+msgstr "ما الذي ترغب بمعرفته بشأن هذه الصورة؟"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:328
+msgid "Ask Ollama"
+msgstr "إسأل OLLAMA"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:347
+msgid "Sends an image of the current navigator object to Ollama."
+msgstr "يرسل صورة للعنصر المركز عليه حاليا لOLLAMA"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:353
+msgid "Sends an image of the entire screen to Ollama."
+msgstr "يرسل صورة لكامل الشاشة لOLLAMA"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:359
+msgid "Sends an image from the Windows clipboard to Ollama."
+msgstr "يرسل صورة من حافظة ويندوز لOLLAMA"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:364
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:373
+msgid "Already analyzing. Please wait."
+msgstr "يتم التحليل بالفعل, انتظر"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:368
+msgid "Prompts for a custom question about the current object."
+msgstr "رسائل لوصف مخصص للسؤال عن العنصر المركز عليه حاليا"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:377
+msgid "Prompts for a custom question about the whole screen."
+msgstr "رسائل لوصف مخصص للسؤال عن كامل الشاشة"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:385
+msgid "Ollama request cancelled."
+msgstr "تم إلغاء طلب OLLAMA"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:387
+msgid "No Ollama request running."
+msgstr "لا يوجد طلب OLLAMA يعمل"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:389
+msgid "Cancels the ongoing Ollama analysis request."
+msgstr "يلغي طلب التحليل الذي يعمل"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:395
+msgid "Last Ollama Description"
+msgstr "آخر وصف لOLLAMA"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:399
+msgid "No previous description found."
+msgstr "لم يتم العثور على وصف مؤخرا"
+
+#: addon\globalPlugins\OllamaImageDiscriber\__init__.py:401
+msgid "Repeats the last Ollama description text."
+msgstr "يكرر آخر وصف لOLLAMA"

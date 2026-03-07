@@ -54,13 +54,13 @@ addon_info = AddonInfo(
 # or use glob expressions.
 # For example to include all files with a ".py" extension from the "globalPlugins" dir of your add-on
 # the list can be written as follows:
-pythonSources = ["addon/globalPlugins/*.py"]
+# pythonSources = ["addon/globalPlugins/*.py"]
 # For more information on SCons Glob expressions please take a look at:
 # https://scons.org/doc/production/HTML/scons-user/apd.html
-# pythonSources: list[str] = []
+pythonSources = ["addon/globalPlugins/**/*.py"]
 
 # Files that contain strings for translation. Usually your python sources
-i18nSources: list[str] = pythonSources + ["buildVars.py"]
+i18nSources = ["addon/globalPlugins/**/*.py"]
 
 # Files that will be ignored when building the nvda-addon file
 # Paths are relative to the addon directory, not to the root directory of your addon sources.
