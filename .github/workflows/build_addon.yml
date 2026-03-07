@@ -46,7 +46,7 @@ jobs:
 
   upload_release:
     runs-on: ubuntu-latest
-    if: ${{ startsWith(github.ref, 'refs/tags/') }}
+    if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
     needs: ["build"]
     permissions:
       contents: write
