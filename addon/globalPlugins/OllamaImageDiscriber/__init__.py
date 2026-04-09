@@ -77,22 +77,25 @@ class OllamaSettingsPanel(gui.settingsDialogs.SettingsPanel):
 		self.timeoutControl.SetValue(get_config_int("timeout", 30))
 
 		self.maxSizeControl = sHelper.addLabeledControl(
-			_("Max Image Size (px):"), wx.SpinCtrl, min=256, max=4096
+			_("Max Image Size (px):"),
+			wx.SpinCtrl,
+			min=256,
+			max=4096,
 		)
 		self.maxSizeControl.SetValue(get_config_int("maxImageSize", 1024))
 
 		self.virtualViewerCheckbox = sHelper.addItem(
-			wx.CheckBox(self, label=_("Show description in Virtual Viewer"))
+			wx.CheckBox(self, label=_("Show description in Virtual Viewer")),
 		)
 		self.virtualViewerCheckbox.SetValue(get_config_bool("useVirtualViewer", True))
 
 		self.clipboardCheckbox = sHelper.addItem(
-			wx.CheckBox(self, label=_("Automatically copy description to clipboard"))
+			wx.CheckBox(self, label=_("Automatically copy description to clipboard")),
 		)
 		self.clipboardCheckbox.SetValue(get_config_bool("copyToClipboard", False))
 
 		self.debugCheckbox = sHelper.addItem(
-			wx.CheckBox(self, label=_("Save captured image to Temp folder (Debug)"))
+			wx.CheckBox(self, label=_("Save captured image to Temp folder (Debug)")),
 		)
 		self.debugCheckbox.SetValue(get_config_bool("debugSave", False))
 
@@ -314,7 +317,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			core.callLater(100, self._processing_heartbeat)
 
 			t = threading.Thread(
-				target=self.worker_process_image, args=(img_data, custom_prompt, context_info)
+				target=self.worker_process_image,
+				args=(img_data, custom_prompt, context_info),
 			)
 			t.daemon = True
 			t.start()
@@ -325,7 +329,9 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	def _prompt_and_capture(self, obj=None, full_screen=False, from_clipboard=False):
 		def show_dialog():
 			dlg = wx.TextEntryDialog(
-				gui.mainFrame, _("What would you like to ask about this image?"), _("Ask Ollama")
+				gui.mainFrame,
+				_("What would you like to ask about this image?"),
+				_("Ask Ollama"),
 			)
 			gui.mainFrame.prePopup()
 			try:
