@@ -1,26 +1,25 @@
-# -*- coding: utf-8 -*-
-import sys
-import os
+import base64
 import io
 import json
-import threading
-import base64
-import urllib.request
-import urllib.error
+import os
 import socket
+import sys
 import tempfile
-import wx
+import threading
+import urllib.error
+import urllib.request
 
-import api
-import ui
-import core
-import config
-import gui
-import globalPluginHandler
-import scriptHandler
-import queueHandler
 import addonHandler
+import api
+import config
+import core
+import globalPluginHandler
+import gui
+import queueHandler
+import scriptHandler
 import tones
+import ui
+import wx
 from logHandler import log
 
 addonHandler.initTranslation()
@@ -113,7 +112,7 @@ class OllamaSettingsPanel(gui.settingsDialogs.SettingsPanel):
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	def __init__(self):
-		super(GlobalPlugin, self).__init__()
+		super().__init__()
 		self.is_processing = False
 		self.cancel_event = threading.Event()
 		self.last_response = ""
@@ -122,7 +121,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 	def terminate(self):
 		gui.settingsDialogs.NVDASettingsDialog.categoryClasses.remove(OllamaSettingsPanel)
-		super(GlobalPlugin, self).terminate()
+		super().terminate()
 
 	def play_sound(self, sound_type):
 		if sound_type == "start":
@@ -260,7 +259,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			self.play_sound("error")
 			core.callLater(10, ui.message, _("Invalid response from server. Check Ollama host url."))
 			log.error("Ollama API Error: JSON Decode Failed")
-		except socket.timeout:
+		except TimeoutError:
 			if not self.cancel_event.is_set():
 				self.play_sound("error")
 				core.callLater(10, ui.message, _("Ollama server timed out. Try increasing the timeout."))
